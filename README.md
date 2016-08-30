@@ -1,1 +1,1 @@
-#Telegram bot for get training data
+#Telegram bot for get training data 
