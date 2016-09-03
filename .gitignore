@@ -1,1 +1,3 @@
 server/node_modules/
+*.pyc
+local_config.py
