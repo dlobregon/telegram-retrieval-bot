@@ -15,7 +15,7 @@ from thrift import Thrift
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
-
+from local_config import ConnectionToken
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -99,7 +99,7 @@ def sendQuestion(usr,qt):
 
 def main():
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("token")
+    updater = Updater(ConnectionToken)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
