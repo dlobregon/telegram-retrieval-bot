@@ -71,43 +71,31 @@ def error(bot, update, error):
 def sendQuestion(usr,qt):
     logger.info("!!!!!!!!!!!!!!!!!!!!!!!! entrando a guardar !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     user= str(usr)
-    question = str(qt)
+    quest = str(qt)
     #logger.info(type(user_tmp))
     #logger.info(type(question_tmp))
     try:
     	#hacemos la conexion
     	transport = TSocket.TSocket('localhost', 9090)
-        logger.info("!!!! checkpoitn 1")
     	transport = TTransport.TFramedTransport(transport)
-        logger.info("!!!! checkpoitn 2")
     	protocol = TBinaryProtocol.TBinaryProtocol(transport)
     	#creamos nuestro cliente
-        logger.info("!!!! checkpoitn 3")
     	client = Publish.Client(protocol)
-        logger.info("!!!! checkpoitn 4")
     	transport.open()
-        logger.info("!!!! checkpoitn 5")
 
     	question = Question()
-        logger.info("!!!! checkpoitn 6")
-    	question.id = 1000
-        logger.info("!!!! checkpoitn 7")
-    	#colocamos el usuario
+        question.id = 1000
+        #colocamos el usuario
     	question.user = user
-        logger.info("!!!! checkpoitn 8")
-    	#metemos el twit
-    	question.question = question
-        logger.info("!!!! checkpoitn 9")
+        #metemos el twit
+    	question.question = quest
     	#hacemos las llamadas al sistema
     	client.save(question)
-        logger.info("!!!! checkpoitn 10")
 
     	transport.close()
-        logger.info("!!!! checkpoitn 11")
 
     except Thrift.TException, tx:
     	print '%s' % (tx.message)
-        logger.info("!!!! checkpoitn 12")
 
 def main():
     # Create the EventHandler and pass it your bot's token.
