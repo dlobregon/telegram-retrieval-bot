@@ -15,7 +15,7 @@ from thrift import Thrift
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
-from local_config import ConnectionToken
+from local_config import *
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -69,14 +69,13 @@ def error(bot, update, error):
 
 #funcion para enviar la informacion
 def sendQuestion(usr,qt):
-    logger.info("!!!!!!!!!!!!!!!!!!!!!!!! entrando a guardar !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     user= str(usr)
     quest = str(qt)
     #logger.info(type(user_tmp))
     #logger.info(type(question_tmp))
     try:
     	#hacemos la conexion
-    	transport = TSocket.TSocket('localhost', 9090)
+    	transport = TSocket.TSocket(serverPath, serverPort)
     	transport = TTransport.TFramedTransport(transport)
     	protocol = TBinaryProtocol.TBinaryProtocol(transport)
     	#creamos nuestro cliente
